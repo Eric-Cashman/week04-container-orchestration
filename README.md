@@ -149,8 +149,8 @@ The AI told me `restart: unless-stopped` would restart a container killed with `
 - [ ] **Crash self-healing:** `docker exec <web-2> sh -c "kill 1"` → `RestartCount` = `TODO`, container returned to `(healthy)` = `TODO`, no manual `compose up` used
 
 ### 4. Browser console & health check status
-- [ ] DevTools Network tab: 200 responses, headers, and response times (`TODO: add screenshot or note`)
-- [ ] DevTools Console free of errors (`TODO`)
+- [ X] DevTools Network tab: 200 responses, headers, and response times (`TODO: add screenshot or note`)
+- [ X] DevTools Console free of errors (`TODO`)
 
 ## Repository Contents
 
