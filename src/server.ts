@@ -48,7 +48,23 @@ app.get("/info", (_req: Request, res: Response) => {
   });
 });
 
+if (process.env.ENABLE_CRASH_ENDPOINT === "true") {
+  app.post("/crash", (_req: Request, res: Response) => {
+    const hostname = os.hostname();
+    console.log(`Crash requested on ${hostname}, exiting with code 1`);
+    res.status(200).json({ crashing: hostname });
+    setTimeout(() => process.exit(1), 100);
+  });
+}
+
 const server = app.listen(PORT, () => {
   console.log(`${APP_NAME} listening on port ${PORT} (host: ${os.hostname()})`);
 });
 
+const shutdown = (signal: string) => {
+  console.log(`${signal} received, shutting down`);
+  server.close(() => process.exit(0));
+  setTimeout(() => process.exit(1), 8000).unref();
+};
+process.on("SIGTERM", () => shutdown("SIGTERM"));
+process.on("SIGINT", () => shutdown("SIGINT"));
