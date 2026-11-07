@@ -1,4 +1,4 @@
-# week04-container-orchestration
+# week06-container-orchestration
 
 A small TypeScript/Express web app packaged as a hardened, multi-stage Docker image and orchestrated with Docker Compose behind an nginx load balancer. Built for the Week 04 assignment on containerization, image optimization, and orchestration.
 
